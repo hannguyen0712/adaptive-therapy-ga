@@ -1,0 +1,791 @@
+(base) hanngn@Hans-MacBook-Pro CancerSim2 % python ga-threshold-update.py 
+Threshold-Only GA
+Seed: 42
+Grid: 50³ = 125,000 points
+Danger ceiling: 62,500 (50%)
+Warmup: 2000 steps
+GA: pop=20  gen=25  workers=4  ranks=1
+Genome: 2 genes [dosage, cell_threshold]
+Crossover: 1-point  |  Mutation: 50% per gene (modification only)
+Fitness = TTP (snapshots before breach of [0.5×W₀, 1.5×W₀])
+  Band: [0.5×W₀, 1.5×W₀] set from warmup cell count
+
+============================================================
+PREFLIGHT — Grid: 50³ = 125,000 points
+Danger ceiling: 62,500 (50%)
+Warmup: 2000 steps
+Min threshold: 2,500 cells
+============================================================
+  Baseline: fit=42  burden=117,482  final=2,765  peak=3,509
+  Maxdose:  fit=0  burden=1  final=0  dose=8,760,000
+  Drugs WORK
+  Warmup cell count (t=2000): 1,154
+  Post-warmup baseline: mean=2701  min=1,154  max=3,509
+  Containment band: [577, 1,731]
+    DANGER_FLOOR = 0.5 x W0: 577
+    DANGER_CEIL  = 1.5 x W0: 62,500 -> 1,731
+  Band width: 1,154
+  Baseline post-warmup: 4 stable / 38 overflow / 0 underflow (out of 42)
+  Threshold gene: [1.0, 2.0] × W₀ = [1,154, 2,308]
+  Baseline fitness (post-warmup stable): 4
+  00: fit=  4  stb=16/42  ovf= 0  ufl=26  ext= 0  [d=639 t=1.02×W₀]
+  03: fit=  5  stb=13/42  ovf= 0  ufl=29  ext= 0  [d=892 t=1.09×W₀]
+  02: fit=  7  stb=19/42  ovf= 3  ufl=20  ext= 0  [d=736 t=1.68×W₀]
+  01: fit=  8  stb=37/42  ovf= 0  ufl= 5  ext= 0  [d=275 t=1.22×W₀]
+  06: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.20×W₀]
+  05: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=219 t=1.50×W₀]
+  04: fit=  4  stb=23/42  ovf= 0  ufl=19  ext= 0  [d=422 t=1.03×W₀]
+  07: fit=  4  stb=20/42  ovf= 1  ufl=21  ext= 0  [d=650 t=1.54×W₀]
+  09: fit=  3  stb=12/42  ovf= 0  ufl=30  ext= 0  [d=809 t=1.01×W₀]
+  08: fit=  5  stb=36/42  ovf= 4  ufl= 2  ext= 0  [d=220 t=1.59×W₀]
+  11: fit=  4  stb=26/42  ovf= 0  ufl=16  ext= 0  [d=340 t=1.16×W₀]
+  10: fit=  8  stb=20/42  ovf= 2  ufl=20  ext= 0  [d=806 t=1.70×W₀]
+  12: fit=  7  stb=17/42  ovf= 0  ufl=25  ext= 0  [d=957 t=1.34×W₀]
+  14: fit=  5  stb=18/42  ovf= 1  ufl=23  ext= 0  [d=847 t=1.60×W₀]
+  15: fit=  5  stb=15/42  ovf= 5  ufl=22  ext= 0  [d=807 t=1.73×W₀]
+  13: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=93 t=1.10×W₀]
+  16: fit=  4  stb=23/42  ovf= 7  ufl=12  ext= 0  [d=536 t=1.97×W₀]
+  17: fit=  6  stb=30/42  ovf= 3  ufl= 9  ext= 0  [d=379 t=1.55×W₀]
+  18: fit=  4  stb=17/42  ovf= 2  ufl=23  ext= 0  [d=829 t=1.62×W₀]
+  19: fit=  4  stb=16/42  ovf= 1  ufl=25  ext= 0  [d=862 t=1.58×W₀]
+
+============================================================
+  Generation 1 / 25  [19.3 min elapsed]
+============================================================
+
+  >> Best: 42  Avg: 11  vs baseline: +38
+     genome: dose=218.6  thresh=1.50×W₀
+     stb=42/42  ovf=0  ufl=0  ext=0  final=1,577
+     outcome=MANAGED (end)
+  00: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=219 t=1.50×W₀]
+  03: fit=  0  stb=35/42  ovf= 6  ufl= 1  ext= 0  [d=219 t=1.60×W₀]
+  01: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.20×W₀]
+  02: fit=  4  stb=24/42  ovf= 0  ufl=18  ext= 0  [d=602 t=1.50×W₀]
+  05: fit=  4  stb=24/42  ovf= 0  ufl=18  ext= 0  [d=444 t=1.22×W₀]
+  04: fit= 14  stb=40/42  ovf= 0  ufl= 2  ext= 0  [d=275 t=1.50×W₀]
+  06: fit=  5  stb= 5/42  ovf=37  ufl= 0  ext= 0  [d=0 t=1.22×W₀]
+  07: fit=  7  stb=36/42  ovf= 0  ufl= 6  ext= 0  [d=346 t=1.50×W₀]
+  08: fit= 38  stb=41/42  ovf= 0  ufl= 1  ext= 0  [d=219 t=1.34×W₀]
+  09: fit=  4  stb=15/42  ovf= 0  ufl=27  ext= 0  [d=869 t=1.40×W₀]
+  11: fit=  5  stb=20/42  ovf= 0  ufl=22  ext= 0  [d=650 t=1.50×W₀]
+  10: fit= 32  stb=41/42  ovf= 1  ufl= 0  ext= 0  [d=219 t=1.54×W₀]
+  12: fit=  6  stb= 6/42  ovf=36  ufl= 0  ext= 0  [d=0 t=1.22×W₀]
+  15: fit=  2  stb=12/42  ovf= 0  ufl=30  ext= 0  [d=941 t=1.10×W₀]
+  13: fit=  2  stb=15/42  ovf= 0  ufl=27  ext= 0  [d=495 t=1.06×W₀]
+  14: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=93 t=1.34×W₀]
+  17: fit= 12  stb=40/42  ovf= 1  ufl= 1  ext= 0  [d=219 t=1.54×W₀]
+  16: fit=  6  stb=18/42  ovf= 0  ufl=24  ext= 0  [d=723 t=1.43×W₀]
+  18: fit= 29  stb=41/42  ovf= 0  ufl= 1  ext= 0  [d=173 t=1.22×W₀]
+  19: fit= 33  stb=41/42  ovf= 0  ufl= 1  ext= 0  [d=190 t=1.52×W₀]
+
+============================================================
+  Generation 2 / 25  [35.1 min elapsed]
+============================================================
+
+  >> Best: 42  Avg: 16  vs baseline: +38
+     genome: dose=218.6  thresh=1.50×W₀
+     stb=42/42  ovf=0  ufl=0  ext=0  final=1,384
+     outcome=MANAGED (end)
+  01: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.20×W₀]
+  02: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.43×W₀]
+  00: fit= 34  stb=41/42  ovf= 0  ufl= 1  ext= 0  [d=219 t=1.50×W₀]
+  03: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=93 t=1.37×W₀]
+  04: fit=  9  stb=34/42  ovf= 0  ufl= 8  ext= 0  [d=409 t=1.52×W₀]
+  05: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=190 t=1.25×W₀]
+  06: fit= 41  stb=41/42  ovf= 1  ufl= 0  ext= 0  [d=190 t=1.52×W₀]
+  07: fit= 11  stb=40/42  ovf= 2  ufl= 0  ext= 0  [d=190 t=1.52×W₀]
+  09: fit=  6  stb=39/42  ovf= 0  ufl= 3  ext= 0  [d=219 t=1.54×W₀]
+  08: fit= 10  stb=41/42  ovf= 0  ufl= 1  ext= 0  [d=219 t=1.50×W₀]
+  11: fit=  4  stb=21/42  ovf=21  ufl= 0  ext= 0  [d=17 t=1.56×W₀]
+  10: fit=  6  stb=38/42  ovf= 0  ufl= 4  ext= 0  [d=275 t=1.20×W₀]
+  13: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=219 t=1.50×W₀]
+  12: fit=  5  stb=34/42  ovf= 0  ufl= 8  ext= 0  [d=346 t=1.46×W₀]
+  15: fit=  7  stb=40/42  ovf= 0  ufl= 2  ext= 0  [d=190 t=1.28×W₀]
+  14: fit= 30  stb=41/42  ovf= 0  ufl= 1  ext= 0  [d=173 t=1.52×W₀]
+  16: fit=  3  stb=32/42  ovf= 0  ufl=10  ext= 0  [d=360 t=1.22×W₀]
+  18: fit=  7  stb=22/42  ovf= 0  ufl=20  ext= 0  [d=578 t=1.12×W₀]
+  17: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=151 t=1.20×W₀]
+  19: fit= 10  stb=39/42  ovf= 3  ufl= 0  ext= 0  [d=27 t=1.50×W₀]
+
+============================================================
+  Generation 3 / 25  [89.6 min elapsed]
+============================================================
+
+  >> Best: 42  Avg: 22  vs baseline: +38
+     genome: dose=218.6  thresh=1.50×W₀
+     stb=42/42  ovf=0  ufl=0  ext=0  final=1,384
+     outcome=MANAGED (end)
+  01: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.43×W₀]
+  02: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=4 t=1.20×W₀]
+  00: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.20×W₀]
+  03: fit= 28  stb=41/42  ovf= 0  ufl= 1  ext= 0  [d=151 t=1.12×W₀]
+  04: fit=  7  stb= 7/42  ovf=35  ufl= 0  ext= 0  [d=0 t=1.20×W₀]
+  06: fit= 13  stb=39/42  ovf= 0  ufl= 3  ext= 0  [d=239 t=1.13×W₀]
+  05: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=136 t=1.46×W₀]
+  07: fit= 16  stb=40/42  ovf= 2  ufl= 0  ext= 0  [d=56 t=1.50×W₀]
+  08: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.38×W₀]
+  09: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=151 t=1.20×W₀]
+  10: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=151 t=1.00×W₀]
+  11: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=12 t=1.20×W₀]
+  13: fit=  1  stb=38/42  ovf= 0  ufl= 4  ext= 0  [d=146 t=1.09×W₀]
+  12: fit= 13  stb=36/42  ovf= 0  ufl= 6  ext= 0  [d=200 t=1.20×W₀]
+  15: fit=  6  stb= 6/42  ovf=36  ufl= 0  ext= 0  [d=0 t=1.37×W₀]
+  14: fit= 17  stb=38/42  ovf= 0  ufl= 4  ext= 0  [d=140 t=1.15×W₀]
+  16: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=105 t=1.25×W₀]
+  17: fit=  6  stb= 6/42  ovf=36  ufl= 0  ext= 0  [d=0 t=1.25×W₀]
+  18: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=190 t=1.36×W₀]
+  19: fit= 32  stb=40/42  ovf= 2  ufl= 0  ext= 0  [d=190 t=1.57×W₀]
+
+============================================================
+  Generation 4 / 25  [105.8 min elapsed]
+============================================================
+
+  >> Best: 42  Avg: 28  vs baseline: +38
+     genome: dose=218.6  thresh=1.50×W₀
+     stb=42/42  ovf=0  ufl=0  ext=0  final=1,384
+     outcome=MANAGED (end)
+  01: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.43×W₀]
+  00: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.20×W₀]
+  03: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.12×W₀]
+  02: fit=  4  stb=33/42  ovf= 0  ufl= 9  ext= 0  [d=321 t=1.32×W₀]
+  04: fit=  8  stb= 8/42  ovf=34  ufl= 0  ext= 0  [d=0 t=1.42×W₀]
+  05: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.29×W₀]
+  06: fit= 26  stb=40/42  ovf= 0  ufl= 2  ext= 0  [d=101 t=1.12×W₀]
+  07: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=46 t=1.50×W₀]
+  08: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=57 t=1.22×W₀]
+  11: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=151 t=1.12×W₀]
+  10: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=151 t=1.00×W₀]
+  09: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=136 t=1.20×W₀]
+  12: fit=  6  stb=34/42  ovf= 8  ufl= 0  ext= 0  [d=151 t=1.59×W₀]
+  13: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=37 t=1.00×W₀]
+  15: fit= 25  stb=40/42  ovf= 0  ufl= 2  ext= 0  [d=151 t=1.12×W₀]
+  14: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=151 t=1.20×W₀]
+  16: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=151 t=1.26×W₀]
+  17: fit= 16  stb=41/42  ovf= 0  ufl= 1  ext= 0  [d=105 t=1.09×W₀]
+  19: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=190 t=1.12×W₀]
+  18: fit=  4  stb=35/42  ovf= 7  ufl= 0  ext= 0  [d=158 t=1.57×W₀]
+
+============================================================
+  Generation 5 / 25  [121.8 min elapsed]
+============================================================
+
+  >> Best: 42  Avg: 32  vs baseline: +38
+     genome: dose=218.6  thresh=1.50×W₀
+     stb=42/42  ovf=0  ufl=0  ext=0  final=1,384
+     outcome=MANAGED (end)
+  01: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.43×W₀]
+  00: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.20×W₀]
+  02: fit= 19  stb=41/42  ovf= 0  ufl= 1  ext= 0  [d=101 t=1.00×W₀]
+  03: fit=  4  stb= 4/42  ovf=38  ufl= 0  ext= 0  [d=0 t=1.28×W₀]
+  04: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=72 t=1.12×W₀]
+  06: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=193 t=1.37×W₀]
+  05: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=151 t=1.07×W₀]
+  07: fit= 29  stb=41/42  ovf= 0  ufl= 1  ext= 0  [d=136 t=1.12×W₀]
+  09: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=87 t=1.29×W₀]
+  08: fit= 22  stb=41/42  ovf= 0  ufl= 1  ext= 0  [d=141 t=1.12×W₀]
+  10: fit= 17  stb=41/42  ovf= 0  ufl= 1  ext= 0  [d=234 t=1.13×W₀]
+  11: fit= 15  stb=41/42  ovf= 0  ufl= 1  ext= 0  [d=101 t=1.12×W₀]
+  12: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.20×W₀]
+  13: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=54 t=1.09×W₀]
+  15: fit= 24  stb=41/42  ovf= 0  ufl= 1  ext= 0  [d=136 t=1.14×W₀]
+  14: fit= 31  stb=41/42  ovf= 0  ufl= 1  ext= 0  [d=169 t=1.20×W₀]
+  16: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=151 t=1.00×W₀]
+  17: fit= 22  stb=41/42  ovf= 0  ufl= 1  ext= 0  [d=151 t=1.23×W₀]
+  19: fit=  9  stb= 9/42  ovf=33  ufl= 0  ext= 0  [d=0 t=1.12×W₀]
+  18: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=87 t=1.45×W₀]
+
+============================================================
+  Generation 6 / 25  [138.0 min elapsed]
+============================================================
+
+  >> Best: 42  Avg: 31  vs baseline: +38
+     genome: dose=218.6  thresh=1.50×W₀
+     stb=42/42  ovf=0  ufl=0  ext=0  final=1,384
+     outcome=MANAGED (end)
+  02: fit= 18  stb=41/42  ovf= 0  ufl= 1  ext= 0  [d=286 t=1.36×W₀]
+  00: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.20×W₀]
+  01: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.43×W₀]
+  03: fit= 34  stb=40/42  ovf= 0  ufl= 2  ext= 0  [d=193 t=1.09×W₀]
+  04: fit= 10  stb=41/42  ovf= 0  ufl= 1  ext= 0  [d=264 t=1.42×W₀]
+  05: fit=  4  stb=39/42  ovf= 0  ufl= 3  ext= 0  [d=256 t=1.48×W₀]
+  06: fit=  7  stb= 7/42  ovf=35  ufl= 0  ext= 0  [d=0 t=1.06×W₀]
+  07: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=149 t=1.29×W₀]
+  08: fit=  9  stb=41/42  ovf= 0  ufl= 1  ext= 0  [d=193 t=1.20×W₀]
+  09: fit= 25  stb=40/42  ovf= 0  ufl= 2  ext= 0  [d=169 t=1.37×W₀]
+  10: fit=  6  stb= 6/42  ovf=36  ufl= 0  ext= 0  [d=0 t=1.20×W₀]
+  11: fit=  6  stb= 6/42  ovf=36  ufl= 0  ext= 0  [d=0 t=1.20×W₀]
+  13: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=87 t=1.01×W₀]
+  12: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=140 t=1.29×W₀]
+  14: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=87 t=1.45×W₀]
+  15: fit=  8  stb=37/42  ovf= 0  ufl= 5  ext= 0  [d=243 t=1.29×W₀]
+  19: fit= 22  stb=41/42  ovf= 0  ufl= 1  ext= 0  [d=127 t=1.07×W₀]
+  18: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=151 t=1.29×W₀]
+  16: fit=  5  stb= 5/42  ovf=37  ufl= 0  ext= 0  [d=0 t=1.00×W₀]
+  17: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=151 t=1.26×W₀]
+
+============================================================
+  Generation 7 / 25  [154.0 min elapsed]
+============================================================
+
+  >> Best: 42  Avg: 24  vs baseline: +38
+     genome: dose=218.6  thresh=1.50×W₀
+     stb=42/42  ovf=0  ufl=0  ext=0  final=1,384
+     outcome=MANAGED (end)
+  01: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.43×W₀]
+  02: fit= 27  stb=41/42  ovf= 0  ufl= 1  ext= 0  [d=151 t=1.17×W₀]
+  00: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.20×W₀]
+  03: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=100 t=1.32×W₀]
+  05: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=82 t=1.20×W₀]
+  04: fit= 27  stb=38/42  ovf= 0  ufl= 4  ext= 0  [d=170 t=1.01×W₀]
+  07: fit= 24  stb=39/42  ovf= 0  ufl= 3  ext= 0  [d=151 t=1.01×W₀]
+  06: fit=  8  stb= 8/42  ovf=34  ufl= 0  ext= 0  [d=0 t=1.13×W₀]
+  08: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=140 t=1.43×W₀]
+  11: fit= 28  stb=41/42  ovf= 0  ufl= 1  ext= 0  [d=151 t=1.07×W₀]
+  09: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.25×W₀]
+  10: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=79 t=1.26×W₀]
+  12: fit= 35  stb=40/42  ovf= 0  ufl= 2  ext= 0  [d=193 t=1.01×W₀]
+  14: fit= 15  stb=40/42  ovf= 0  ufl= 2  ext= 0  [d=151 t=1.29×W₀]
+  13: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=87 t=1.06×W₀]
+  15: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=114 t=1.13×W₀]
+  16: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=140 t=1.45×W₀]
+  18: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=225 t=1.37×W₀]
+  19: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=169 t=1.38×W₀]
+  17: fit=  6  stb= 6/42  ovf=36  ufl= 0  ext= 0  [d=0 t=1.29×W₀]
+
+============================================================
+  Generation 8 / 25  [198.3 min elapsed]
+============================================================
+
+  >> Best: 42  Avg: 34  vs baseline: +38
+     genome: dose=218.6  thresh=1.50×W₀
+     stb=42/42  ovf=0  ufl=0  ext=0  final=1,384
+     outcome=MANAGED (end)
+  02: fit= 16  stb=37/42  ovf= 0  ufl= 5  ext= 0  [d=309 t=1.20×W₀]
+  01: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.43×W₀]
+  03: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.37×W₀]
+  00: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.20×W₀]
+  04: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=82 t=1.25×W₀]
+  05: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.29×W₀]
+  07: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=140 t=1.37×W₀]
+  06: fit=  6  stb=33/42  ovf= 0  ufl= 9  ext= 0  [d=374 t=1.50×W₀]
+  10: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=39 t=1.43×W₀]
+  08: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=31 t=1.32×W₀]
+  09: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=84 t=1.20×W₀]
+  11: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.25×W₀]
+  12: fit= 20  stb=38/42  ovf= 4  ufl= 0  ext= 0  [d=100 t=1.54×W₀]
+  13: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=225 t=1.39×W₀]
+  14: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=107 t=1.40×W₀]
+  15: fit= 36  stb=41/42  ovf= 0  ufl= 1  ext= 0  [d=181 t=1.16×W₀]
+  16: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=100 t=1.20×W₀]
+  18: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=193 t=1.25×W₀]
+  17: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.32×W₀]
+  19: fit= 14  stb=38/42  ovf= 0  ufl= 4  ext= 0  [d=288 t=1.32×W₀]
+
+============================================================
+  Generation 9 / 25  [722.1 min elapsed]
+============================================================
+
+  >> Best: 42  Avg: 36  vs baseline: +38
+     genome: dose=218.6  thresh=1.50×W₀
+     stb=42/42  ovf=0  ufl=0  ext=0  final=1,384
+     outcome=MANAGED (end)
+  02: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=61 t=1.31×W₀]
+  01: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.43×W₀]
+  03: fit=  5  stb= 5/42  ovf=37  ufl= 0  ext= 0  [d=0 t=1.37×W₀]
+  00: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.20×W₀]
+  04: fit= 10  stb=10/42  ovf=32  ufl= 0  ext= 0  [d=0 t=1.47×W₀]
+  07: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=100 t=1.14×W₀]
+  05: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.37×W₀]
+  06: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.30×W₀]
+  08: fit=  7  stb= 7/42  ovf=35  ufl= 0  ext= 0  [d=0 t=1.32×W₀]
+  09: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=74 t=1.40×W₀]
+  10: fit=  8  stb= 8/42  ovf=34  ufl= 0  ext= 0  [d=0 t=1.39×W₀]
+  11: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=149 t=1.41×W₀]
+  15: fit= 38  stb=41/42  ovf= 0  ufl= 1  ext= 0  [d=193 t=1.20×W₀]
+  12: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.43×W₀]
+  14: fit=  4  stb= 4/42  ovf=38  ufl= 0  ext= 0  [d=0 t=1.25×W₀]
+  13: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.43×W₀]
+  18: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=94 t=1.44×W₀]
+  16: fit=  7  stb= 7/42  ovf=35  ufl= 0  ext= 0  [d=0 t=1.32×W₀]
+  17: fit=  5  stb= 5/42  ovf=37  ufl= 0  ext= 0  [d=0 t=1.14×W₀]
+  19: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.40×W₀]
+
+============================================================
+  Generation 10 / 25  [738.5 min elapsed]
+============================================================
+
+  >> Best: 42  Avg: 29  vs baseline: +38
+     genome: dose=218.6  thresh=1.50×W₀
+     stb=42/42  ovf=0  ufl=0  ext=0  final=1,384
+     outcome=MANAGED (end)
+  03: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=107 t=1.24×W₀]
+  01: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.43×W₀]
+  00: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.20×W₀]
+  02: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=61 t=1.46×W₀]
+  07: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=127 t=1.23×W₀]
+  05: fit= 18  stb=41/42  ovf= 0  ufl= 1  ext= 0  [d=250 t=1.40×W₀]
+  04: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=59 t=1.40×W₀]
+  06: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=100 t=1.43×W₀]
+  09: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=38 t=1.20×W₀]
+  08: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.30×W₀]
+  11: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=67 t=1.51×W₀]
+  10: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.43×W₀]
+  13: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=13 t=1.31×W₀]
+  12: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=61 t=1.16×W₀]
+  14: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=24 t=1.49×W₀]
+  15: fit=  8  stb=35/42  ovf= 7  ufl= 0  ext= 0  [d=27 t=1.51×W₀]
+  16: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.10×W₀]
+  18: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.43×W₀]
+  19: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=199 t=1.24×W₀]
+  17: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=100 t=1.30×W₀]
+
+============================================================
+  Generation 11 / 25  [754.9 min elapsed]
+============================================================
+
+  >> Best: 42  Avg: 39  vs baseline: +38
+     genome: dose=218.6  thresh=1.50×W₀
+     stb=42/42  ovf=0  ufl=0  ext=0  final=1,384
+     outcome=MANAGED (end)
+  00: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.20×W₀]
+  03: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=18 t=1.08×W₀]
+  01: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.43×W₀]
+  02: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=38 t=1.30×W₀]
+  05: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=167 t=1.20×W₀]
+  04: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=38 t=1.40×W₀]
+  07: fit=  8  stb= 8/42  ovf=34  ufl= 0  ext= 0  [d=0 t=1.29×W₀]
+  06: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=199 t=1.31×W₀]
+  09: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=55 t=1.16×W₀]
+  08: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=87 t=1.49×W₀]
+  10: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=199 t=1.51×W₀]
+  11: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=67 t=1.24×W₀]
+  12: fit=  6  stb= 6/42  ovf=36  ufl= 0  ext= 0  [d=0 t=1.24×W₀]
+  13: fit= 14  stb=38/42  ovf= 0  ufl= 4  ext= 0  [d=199 t=1.07×W₀]
+  15: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.10×W₀]
+  14: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.43×W₀]
+  16: fit= 12  stb=40/42  ovf= 0  ufl= 2  ext= 0  [d=272 t=1.46×W₀]
+  17: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=24 t=1.43×W₀]
+  18: fit= 28  stb=41/42  ovf= 1  ufl= 0  ext= 0  [d=81 t=1.51×W₀]
+  19: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=67 t=1.30×W₀]
+
+============================================================
+  Generation 12 / 25  [1093.8 min elapsed]
+============================================================
+
+  >> Best: 42  Avg: 35  vs baseline: +38
+     genome: dose=218.6  thresh=1.50×W₀
+     stb=42/42  ovf=0  ufl=0  ext=0  final=1,384
+     outcome=MANAGED (end)
+  03: fit=  8  stb=40/42  ovf= 0  ufl= 2  ext= 0  [d=234 t=1.43×W₀]
+  01: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.43×W₀]
+  02: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=197 t=1.24×W₀]
+  00: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.20×W₀]
+  04: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=67 t=1.20×W₀]
+  05: fit= 31  stb=41/42  ovf= 0  ufl= 1  ext= 0  [d=166 t=1.22×W₀]
+  07: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=24 t=1.40×W₀]
+  06: fit= 12  stb=33/42  ovf= 9  ufl= 0  ext= 0  [d=38 t=1.53×W₀]
+  08: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=47 t=1.38×W₀]
+  09: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=37 t=1.10×W₀]
+  11: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=139 t=1.24×W₀]
+  10: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=67 t=1.08×W₀]
+  12: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=38 t=1.43×W₀]
+  14: fit=  7  stb=39/42  ovf= 0  ufl= 3  ext= 0  [d=220 t=1.24×W₀]
+  13: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=143 t=1.40×W₀]
+  15: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=67 t=1.39×W₀]
+  17: fit= 10  stb=10/42  ovf=32  ufl= 0  ext= 0  [d=0 t=1.40×W₀]
+  18: fit= 28  stb=41/42  ovf= 1  ufl= 0  ext= 0  [d=174 t=1.55×W₀]
+  16: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=132 t=1.30×W₀]
+  19: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.19×W₀]
+
+============================================================
+  Generation 13 / 25  [1230.6 min elapsed]
+============================================================
+
+  >> Best: 42  Avg: 34  vs baseline: +38
+     genome: dose=218.6  thresh=1.50×W₀
+     stb=42/42  ovf=0  ufl=0  ext=0  final=1,384
+     outcome=MANAGED (end)
+  02: fit=  3  stb=37/42  ovf= 1  ufl= 4  ext= 0  [d=224 t=1.53×W₀]
+  03: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=29 t=1.40×W₀]
+  01: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.43×W₀]
+  00: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.20×W₀]
+  05: fit=  5  stb= 5/42  ovf=37  ufl= 0  ext= 0  [d=0 t=1.40×W₀]
+  04: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=24 t=1.21×W₀]
+  07: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=197 t=1.48×W₀]
+  06: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=24 t=1.37×W₀]
+  08: fit= 36  stb=40/42  ovf= 0  ufl= 2  ext= 0  [d=139 t=1.23×W₀]
+  09: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=197 t=1.24×W₀]
+  11: fit= 12  stb=40/42  ovf= 0  ufl= 2  ext= 0  [d=253 t=1.38×W₀]
+  10: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=197 t=1.30×W₀]
+  14: fit=  0  stb=37/42  ovf= 0  ufl= 5  ext= 0  [d=101 t=1.43×W₀]
+  12: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=181 t=1.24×W₀]
+  15: fit= 15  stb=41/42  ovf= 0  ufl= 1  ext= 0  [d=100 t=1.19×W₀]
+  13: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=77 t=1.40×W₀]
+  16: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=145 t=1.40×W₀]
+  17: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=24 t=1.24×W₀]
+  18: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=37 t=1.43×W₀]
+  19: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.10×W₀]
+
+============================================================
+  Generation 14 / 25  [1289.0 min elapsed]
+============================================================
+
+  >> Best: 42  Avg: 33  vs baseline: +38
+     genome: dose=218.6  thresh=1.50×W₀
+     stb=42/42  ovf=0  ufl=0  ext=0  final=1,384
+     outcome=MANAGED (end)
+  02: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=95 t=1.36×W₀]
+  03: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=99 t=1.00×W₀]
+  01: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.43×W₀]
+  00: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.20×W₀]
+  04: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=197 t=1.10×W₀]
+  05: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.39×W₀]
+  07: fit=  8  stb= 8/42  ovf=34  ufl= 0  ext= 0  [d=0 t=1.03×W₀]
+  06: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.49×W₀]
+  08: fit= 15  stb=39/42  ovf= 0  ufl= 3  ext= 0  [d=217 t=1.09×W₀]
+  10: fit=  5  stb=35/42  ovf= 0  ufl= 7  ext= 0  [d=316 t=1.37×W₀]
+  09: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=24 t=1.19×W₀]
+  11: fit=  7  stb= 7/42  ovf=35  ufl= 0  ext= 0  [d=0 t=1.19×W₀]
+  12: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=73 t=1.43×W₀]
+  15: fit= 11  stb=30/42  ovf=12  ufl= 0  ext= 0  [d=24 t=1.53×W₀]
+  13: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=37 t=1.26×W₀]
+  14: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=24 t=1.20×W₀]
+  17: fit=  6  stb= 6/42  ovf=36  ufl= 0  ext= 0  [d=0 t=1.34×W₀]
+  16: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=145 t=1.21×W₀]
+  18: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.21×W₀]
+  19: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=122 t=1.43×W₀]
+
+============================================================
+  Generation 15 / 25  [1305.0 min elapsed]
+============================================================
+
+  >> Best: 42  Avg: 32  vs baseline: +38
+     genome: dose=218.6  thresh=1.50×W₀
+     stb=42/42  ovf=0  ufl=0  ext=0  final=1,384
+     outcome=MANAGED (end)
+  02: fit= 21  stb=40/42  ovf= 2  ufl= 0  ext= 0  [d=219 t=1.53×W₀]
+  00: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.20×W₀]
+  01: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.43×W₀]
+  03: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=24 t=1.10×W₀]
+  04: fit=  6  stb= 6/42  ovf=36  ufl= 0  ext= 0  [d=0 t=1.47×W₀]
+  05: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.20×W₀]
+  07: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=197 t=1.43×W₀]
+  06: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=20 t=1.10×W₀]
+  08: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.21×W₀]
+  10: fit= 25  stb=40/42  ovf= 0  ufl= 2  ext= 0  [d=169 t=1.39×W₀]
+  09: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.29×W₀]
+  11: fit=  3  stb=39/42  ovf= 0  ufl= 3  ext= 0  [d=231 t=1.20×W₀]
+  12: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.13×W₀]
+  13: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.33×W₀]
+  15: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=106 t=1.25×W₀]
+  14: fit= 10  stb=37/42  ovf= 0  ufl= 5  ext= 0  [d=205 t=1.21×W₀]
+  17: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=40 t=1.43×W₀]
+  16: fit= 23  stb=41/42  ovf= 0  ufl= 1  ext= 0  [d=122 t=1.48×W₀]
+  18: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=122 t=1.43×W₀]
+  19: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=114 t=1.43×W₀]
+
+============================================================
+  Generation 16 / 25  [1333.0 min elapsed]
+============================================================
+
+  >> Best: 42  Avg: 34  vs baseline: +38
+     genome: dose=218.6  thresh=1.50×W₀
+     stb=42/42  ovf=0  ufl=0  ext=0  final=1,384
+     outcome=MANAGED (end)
+  00: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.20×W₀]
+  02: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=61 t=1.13×W₀]
+  01: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.43×W₀]
+  03: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.20×W₀]
+  05: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=106 t=1.29×W₀]
+  04: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.25×W₀]
+  07: fit= 37  stb=41/42  ovf= 0  ufl= 1  ext= 0  [d=196 t=1.10×W₀]
+  06: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=20 t=1.26×W₀]
+  08: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.43×W₀]
+  09: fit= 36  stb=41/42  ovf= 0  ufl= 1  ext= 0  [d=197 t=1.20×W₀]
+  10: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=106 t=1.34×W₀]
+  11: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=89 t=1.25×W₀]
+  12: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.39×W₀]
+  13: fit=  9  stb=41/42  ovf= 0  ufl= 1  ext= 0  [d=197 t=1.49×W₀]
+  15: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=77 t=1.31×W₀]
+  14: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=15 t=1.13×W₀]
+  17: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=177 t=1.14×W₀]
+  16: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.43×W₀]
+  19: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=98 t=1.29×W₀]
+  18: fit=  5  stb= 5/42  ovf=37  ufl= 0  ext= 0  [d=0 t=1.13×W₀]
+
+============================================================
+  Generation 17 / 25  [1349.0 min elapsed]
+============================================================
+
+  >> Best: 42  Avg: 38  vs baseline: +38
+     genome: dose=218.6  thresh=1.50×W₀
+     stb=42/42  ovf=0  ufl=0  ext=0  final=1,384
+     outcome=MANAGED (end)
+  03: fit=  7  stb= 7/42  ovf=35  ufl= 0  ext= 0  [d=0 t=1.06×W₀]
+  00: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.20×W₀]
+  01: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.43×W₀]
+  02: fit= 30  stb=41/42  ovf= 0  ufl= 1  ext= 0  [d=177 t=1.25×W₀]
+  05: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=41 t=1.14×W₀]
+  04: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=177 t=1.13×W₀]
+  07: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=40 t=1.25×W₀]
+  06: fit=  5  stb=35/42  ovf= 7  ufl= 0  ext= 0  [d=89 t=1.55×W₀]
+  09: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.31×W₀]
+  08: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=24 t=1.43×W₀]
+  11: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=20 t=1.13×W₀]
+  10: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=61 t=1.26×W₀]
+  13: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.27×W₀]
+  12: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=102 t=1.43×W₀]
+  15: fit=  7  stb= 7/42  ovf=35  ufl= 0  ext= 0  [d=0 t=1.14×W₀]
+  14: fit= 21  stb=41/42  ovf= 0  ufl= 1  ext= 0  [d=114 t=1.29×W₀]
+  16: fit= 28  stb=41/42  ovf= 0  ufl= 1  ext= 0  [d=162 t=1.14×W₀]
+  17: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=111 t=1.43×W₀]
+  19: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.14×W₀]
+  18: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=15 t=1.20×W₀]
+
+============================================================
+  Generation 18 / 25  [1365.1 min elapsed]
+============================================================
+
+  >> Best: 42  Avg: 34  vs baseline: +38
+     genome: dose=218.6  thresh=1.50×W₀
+     stb=42/42  ovf=0  ufl=0  ext=0  final=1,384
+     outcome=MANAGED (end)
+  03: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.26×W₀]
+  01: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.43×W₀]
+  00: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.20×W₀]
+  02: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=148 t=1.45×W₀]
+  05: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=22 t=1.13×W₀]
+  07: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=41 t=1.31×W₀]
+  04: fit= 13  stb=39/42  ovf= 0  ufl= 3  ext= 0  [d=230 t=1.31×W₀]
+  06: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.14×W₀]
+  08: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=114 t=1.28×W₀]
+  09: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=114 t=1.19×W₀]
+  11: fit=  6  stb= 6/42  ovf=36  ufl= 0  ext= 0  [d=0 t=1.43×W₀]
+  10: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=24 t=1.34×W₀]
+  12: fit=  6  stb= 6/42  ovf=36  ufl= 0  ext= 0  [d=0 t=1.40×W₀]
+  13: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=100 t=1.32×W₀]
+  15: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.26×W₀]
+  14: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=61 t=1.43×W₀]
+  16: fit= 28  stb=40/42  ovf= 0  ufl= 2  ext= 0  [d=177 t=1.43×W₀]
+  17: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.13×W₀]
+  18: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=24 t=1.43×W₀]
+  19: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=189 t=1.43×W₀]
+
+============================================================
+  Generation 19 / 25  [1381.4 min elapsed]
+============================================================
+
+  >> Best: 42  Avg: 36  vs baseline: +38
+     genome: dose=218.6  thresh=1.50×W₀
+     stb=42/42  ovf=0  ufl=0  ext=0  final=1,384
+     outcome=MANAGED (end)
+  01: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.43×W₀]
+  03: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=87 t=1.43×W₀]
+  00: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.20×W₀]
+  02: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=189 t=1.15×W₀]
+  04: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=136 t=1.48×W₀]
+  05: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=148 t=1.13×W₀]
+  07: fit=  8  stb= 8/42  ovf=34  ufl= 0  ext= 0  [d=0 t=1.33×W₀]
+  06: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=24 t=1.28×W₀]
+  08: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=157 t=1.47×W₀]
+  11: fit=  4  stb=39/42  ovf= 0  ufl= 3  ext= 0  [d=249 t=1.34×W₀]
+  09: fit= 18  stb=40/42  ovf= 0  ufl= 2  ext= 0  [d=148 t=1.43×W₀]
+  10: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=24 t=1.35×W₀]
+  13: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.32×W₀]
+  12: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=153 t=1.20×W₀]
+  14: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=193 t=1.42×W₀]
+  15: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=100 t=1.45×W₀]
+  16: fit= 25  stb=40/42  ovf= 2  ufl= 0  ext= 0  [d=81 t=1.51×W₀]
+  17: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=24 t=1.34×W₀]
+  18: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=114 t=1.43×W₀]
+  19: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=24 t=1.15×W₀]
+
+============================================================
+  Generation 20 / 25  [1397.9 min elapsed]
+============================================================
+
+  >> Best: 42  Avg: 36  vs baseline: +38
+     genome: dose=218.6  thresh=1.50×W₀
+     stb=42/42  ovf=0  ufl=0  ext=0  final=1,384
+     outcome=MANAGED (end)
+  03: fit= 10  stb=36/42  ovf= 0  ufl= 6  ext= 0  [d=341 t=1.33×W₀]
+  01: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.43×W₀]
+  02: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=24 t=1.42×W₀]
+  00: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.20×W₀]
+  04: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=28 t=1.15×W₀]
+  05: fit=  6  stb= 6/42  ovf=36  ufl= 0  ext= 0  [d=0 t=1.48×W₀]
+  07: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=43 t=1.20×W₀]
+  06: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=64 t=1.24×W₀]
+  08: fit= 25  stb=40/42  ovf= 0  ufl= 2  ext= 0  [d=155 t=1.43×W₀]
+  09: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=31 t=1.34×W₀]
+  11: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=94 t=1.47×W₀]
+  10: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.13×W₀]
+  12: fit=  5  stb= 5/42  ovf=37  ufl= 0  ext= 0  [d=0 t=1.51×W₀]
+  13: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.35×W₀]
+  15: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=114 t=1.48×W₀]
+  14: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=136 t=1.33×W₀]
+  16: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=24 t=1.48×W₀]
+  19: fit=  6  stb= 6/42  ovf=36  ufl= 0  ext= 0  [d=0 t=1.43×W₀]
+  17: fit= 28  stb=41/42  ovf= 0  ufl= 1  ext= 0  [d=140 t=1.20×W₀]
+  18: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=7 t=1.40×W₀]
+
+============================================================
+  Generation 21 / 25  [1415.2 min elapsed]
+============================================================
+
+  >> Best: 42  Avg: 33  vs baseline: +38
+     genome: dose=218.6  thresh=1.50×W₀
+     stb=42/42  ovf=0  ufl=0  ext=0  final=1,384
+     outcome=MANAGED (end)
+  02: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.35×W₀]
+  03: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=7 t=1.12×W₀]
+  01: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.43×W₀]
+  00: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.20×W₀]
+  05: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=90 t=1.31×W₀]
+  04: fit=  5  stb= 5/42  ovf=37  ufl= 0  ext= 0  [d=0 t=1.49×W₀]
+  06: fit= 14  stb=35/42  ovf= 7  ufl= 0  ext= 0  [d=153 t=1.58×W₀]
+  07: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=7 t=1.12×W₀]
+  08: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=24 t=1.48×W₀]
+  09: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=165 t=1.48×W₀]
+  11: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=42 t=1.48×W₀]
+  10: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=58 t=1.33×W₀]
+  12: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.39×W₀]
+  14: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=140 t=1.10×W₀]
+  13: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=136 t=1.22×W₀]
+  15: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.31×W₀]
+  16: fit=  8  stb=36/42  ovf= 6  ufl= 0  ext= 0  [d=24 t=1.52×W₀]
+  18: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=94 t=1.34×W₀]
+  19: fit=  7  stb= 7/42  ovf=35  ufl= 0  ext= 0  [d=0 t=1.34×W₀]
+  17: fit=  6  stb= 6/42  ovf=36  ufl= 0  ext= 0  [d=0 t=1.60×W₀]
+
+============================================================
+  Generation 22 / 25  [1433.2 min elapsed]
+============================================================
+
+  >> Best: 42  Avg: 34  vs baseline: +38
+     genome: dose=218.6  thresh=1.50×W₀
+     stb=42/42  ovf=0  ufl=0  ext=0  final=1,384
+     outcome=MANAGED (end)
+  03: fit=  4  stb=37/42  ovf= 0  ufl= 5  ext= 0  [d=309 t=1.46×W₀]
+  02: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=24 t=1.39×W₀]
+  00: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.20×W₀]
+  01: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.43×W₀]
+  04: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.01×W₀]
+  05: fit= 22  stb=41/42  ovf= 0  ufl= 1  ext= 0  [d=140 t=1.22×W₀]
+  07: fit=  5  stb= 5/42  ovf=37  ufl= 0  ext= 0  [d=0 t=1.34×W₀]
+  06: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=94 t=1.31×W₀]
+  08: fit=  6  stb=21/42  ovf=21  ufl= 0  ext= 0  [d=101 t=1.68×W₀]
+  11: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.48×W₀]
+  10: fit=  7  stb= 7/42  ovf=35  ufl= 0  ext= 0  [d=0 t=1.35×W₀]
+  09: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=165 t=1.46×W₀]
+  12: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=24 t=1.22×W₀]
+  13: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=68 t=1.48×W₀]
+  15: fit= 32  stb=41/42  ovf= 0  ufl= 1  ext= 0  [d=194 t=1.33×W₀]
+  14: fit= 20  stb=40/42  ovf= 1  ufl= 1  ext= 0  [d=129 t=1.51×W₀]
+  16: fit=  6  stb= 6/42  ovf=36  ufl= 0  ext= 0  [d=0 t=1.27×W₀]
+  17: fit=  5  stb= 5/42  ovf=37  ufl= 0  ext= 0  [d=5 t=1.59×W₀]
+  19: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.48×W₀]
+  18: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=131 t=1.35×W₀]
+
+============================================================
+  Generation 23 / 25  [1455.1 min elapsed]
+============================================================
+
+  >> Best: 42  Avg: 28  vs baseline: +38
+     genome: dose=218.6  thresh=1.50×W₀
+     stb=42/42  ovf=0  ufl=0  ext=0  final=1,384
+     outcome=MANAGED (end)
+  01: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.43×W₀]
+  03: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.20×W₀]
+  02: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.01×W₀]
+  00: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.20×W₀]
+  06: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.22×W₀]
+  04: fit=  3  stb= 3/42  ovf=39  ufl= 0  ext= 0  [d=0 t=1.30×W₀]
+  07: fit= 23  stb=41/42  ovf= 0  ufl= 1  ext= 0  [d=140 t=1.10×W₀]
+  05: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=57 t=1.48×W₀]
+  08: fit= 20  stb=41/42  ovf= 0  ufl= 1  ext= 0  [d=131 t=1.29×W₀]
+  10: fit= 10  stb=10/42  ovf=32  ufl= 0  ext= 0  [d=0 t=1.35×W₀]
+  09: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=84 t=1.39×W₀]
+  11: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=131 t=1.22×W₀]
+  12: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=47 t=1.22×W₀]
+  14: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=15 t=1.48×W₀]
+  13: fit= 29  stb=41/42  ovf= 0  ufl= 1  ext= 0  [d=140 t=1.20×W₀]
+  15: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=68 t=1.39×W₀]
+  16: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.44×W₀]
+  17: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.43×W₀]
+  18: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=24 t=1.43×W₀]
+  19: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.39×W₀]
+
+============================================================
+  Generation 24 / 25  [1546.7 min elapsed]
+============================================================
+
+  >> Best: 42  Avg: 36  vs baseline: +38
+     genome: dose=218.6  thresh=1.50×W₀
+     stb=42/42  ovf=0  ufl=0  ext=0  final=1,384
+     outcome=MANAGED (end)
+  01: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.43×W₀]
+  03: fit= 22  stb=40/42  ovf= 0  ufl= 2  ext= 0  [d=133 t=1.03×W₀]
+  02: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=28 t=1.23×W₀]
+  00: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.20×W₀]
+  06: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=15 t=1.23×W₀]
+  04: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=131 t=1.43×W₀]
+  07: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.48×W₀]
+  05: fit=  8  stb= 8/42  ovf=34  ufl= 0  ext= 0  [d=0 t=1.22×W₀]
+  09: fit=  8  stb=34/42  ovf= 8  ufl= 0  ext= 0  [d=140 t=1.57×W₀]
+  08: fit= 20  stb=41/42  ovf= 0  ufl= 1  ext= 0  [d=119 t=1.05×W₀]
+  10: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=52 t=1.01×W₀]
+  11: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=41 t=1.26×W₀]
+  14: fit=  6  stb= 6/42  ovf=36  ufl= 0  ext= 0  [d=0 t=1.00×W₀]
+  12: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=140 t=1.43×W₀]
+  15: fit=  8  stb= 8/42  ovf=34  ufl= 0  ext= 0  [d=0 t=1.22×W₀]
+  13: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=24 t=1.28×W₀]
+  16: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.22×W₀]
+  18: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=69 t=1.17×W₀]
+  17: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=21 t=1.01×W₀]
+  19: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.39×W₀]
+
+============================================================
+  Generation 25 / 25  [1570.7 min elapsed]
+============================================================
+
+  >> Best: 42  Avg: 33  vs baseline: +38
+     genome: dose=218.6  thresh=1.50×W₀
+     stb=42/42  ovf=0  ufl=0  ext=0  final=1,384
+     outcome=MANAGED (end)
+  02: fit=  8  stb=25/42  ovf=17  ufl= 0  ext= 0  [d=90 t=1.64×W₀]
+  00: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.20×W₀]
+  01: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.43×W₀]
+  03: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=3 t=1.22×W₀]
+  04: fit=  3  stb=32/42  ovf= 0  ufl=10  ext= 0  [d=282 t=1.01×W₀]
+  05: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=21 t=1.40×W₀]
+  06: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=18 t=1.18×W₀]
+  07: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=2 t=1.22×W₀]
+  08: fit=  6  stb= 6/42  ovf=36  ufl= 0  ext= 0  [d=0 t=1.31×W₀]
+  09: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=41 t=1.09×W₀]
+  10: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=213 t=1.47×W₀]
+  11: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.43×W₀]
+  12: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=59 t=1.35×W₀]
+  14: fit=  6  stb= 6/42  ovf=36  ufl= 0  ext= 0  [d=0 t=1.46×W₀]
+  15: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=101 t=1.13×W₀]
+  13: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=27 t=1.01×W₀]
+  16: fit= 42  stb=42/42  ovf= 0  ufl= 0  ext= 0  [d=159 t=1.31×W₀]
+  17: fit=  6  stb= 6/42  ovf=36  ufl= 0  ext= 0  [d=0 t=1.22×W₀]
+  18: fit=  9  stb= 9/42  ovf=33  ufl= 0  ext= 0  [d=0 t=1.01×W₀]
+  19: fit=  7  stb=15/42  ovf=27  ufl= 0  ext= 0  [d=21 t=1.59×W₀]
+
+============================================================
+  BEST SCHEDULE (threshold-only)
+  Grid: 50³ = 125,000  |  W₀=1154  mean=2701
+  Band: [577, 1,731]
+  Time: 1596.6 min
+============================================================
+  Fitness: 12  (baseline: 4)
+  Genome:  dose=218.6  thresh=1.50×W₀
+  Stable steps:     41/42  (FLOOR ≤ cells ≤ CEIL)
+  Overflow steps:   0/42  (cells > 1,731)
+  Underflow steps:  1/42  (cells < 577)
+  Extinction steps: 0/42  (cells = 0)
+  Final cells:      1,504
+  Cumulative dose:  3,500
+  Outcome: MANAGED (end)
