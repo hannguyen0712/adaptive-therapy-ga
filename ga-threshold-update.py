@@ -5,8 +5,8 @@
 - Fitness = TTP (time to progression within [0.5*W0, 1.5*W0])
 
 Usage:
-    python ga_threshold_only.py --grid-size 50 --n-ranks 1 --cs2-config ./configs/default.conf
-    python ga_threshold_only.py --grid-size 50 --n-ranks 1 --cs2-config ./configs/grid50.conf
+    python ga-threshold-update.py 
+    python ga-threshold-update.py --grid-size 50 --n-ranks 1 --cs2-config ./configs/default.conf
 """
 
 import random, copy, os, shutil, subprocess, re, sys, argparse, json, time
@@ -15,11 +15,6 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import glob
 from concurrent.futures import ProcessPoolExecutor, as_completed
-
-
-# ─────────────────────────────────────────────────────────────────────────────
-# CONFIGURATION
-# ─────────────────────────────────────────────────────────────────────────────
 
 def parse_cs2_config(config_path):
     params = {}
@@ -138,10 +133,6 @@ def get_config():
     }
     return cfg
 
-# ─────────────────────────────────────────────────────────────────────────────
-# GENOME [dosage, cell_threshold]
-# ─────────────────────────────────────────────────────────────────────────────
-
 class Genome:
     """
     Fixed-length genome with exactly 2 genes:
@@ -166,11 +157,6 @@ def random_genome(cfg):
         dosage=round(random.uniform(cfg["DOSAGE_MIN"], cfg["DOSAGE_MAX"]), 2),
         cell_threshold=round(random.uniform(1.0, 2.0), 3),
     )
-
-
-# ─────────────────────────────────────────────────────────────────────────────
-# TUMOR TRAJECTORY
-# ─────────────────────────────────────────────────────────────────────────────
 
 class TumorTrajectory:
     def __init__(self, timesteps, cell_counts, cumulative_dose,
@@ -320,11 +306,6 @@ def count_alive_cells(filepath):
                 count += 1
     return count
 
-
-# ─────────────────────────────────────────────────────────────────────────────
-# DRUG ROUTINE — single threshold rule
-# ─────────────────────────────────────────────────────────────────────────────
-
 def write_routine(genome, filepath, cfg):
     warmup = cfg["WARMUP_PERIOD"]
     sample_period = cfg["SAMPLE_PERIOD"]
@@ -350,7 +331,6 @@ def drug_func(timestep, drug_idx, num_cells, num_resistant):
         num_resistant = sum(num_resistant)
     num_cells = int(num_cells or 0)
 
-    # Log interval max at each sample boundary
     if timestep % SAMPLE_PERIOD == 0 and timestep > 0:
         _dose_log.append(_interval_max_dose)
         _interval_max_dose = 0.0
@@ -387,11 +367,6 @@ def finalize():
     os.makedirs(os.path.dirname(filepath), exist_ok=True)
     with open(filepath, "w") as f:
         f.write(script)
-
-
-# ─────────────────────────────────────────────────────────────────────────────
-# SIMULATION
-# ─────────────────────────────────────────────────────────────────────────────
 
 def run_simulation(routine_path, samples_dir, cfg):
     if os.path.exists(samples_dir):
@@ -444,43 +419,6 @@ def run_simulation(routine_path, samples_dir, cfg):
 
     return TumorTrajectory(timesteps, counts, cum_dose, dose_per_step, cfg)
 
-
-# ─────────────────────────────────────────────────────────────────────────────
-# FITNESS — survival time within containment band
-#
-# f(T) = number of snapshots where FLOOR ≤ cells ≤ CEIL
-# ─────────────────────────────────────────────────────────────────────────────
-
-# def compute_fitness(traj, cfg):
-#     """
-#     Fitness = Time to Progression (TTP).
-
-#     this is stable step
-#     TTP = number of post-warmup snapshots before cells breach either bound:
-#       - Upper: cells > upper_mult * W0  (tumor progressed)
-#       - Lower: cells < lower_mult * W0  (drug toxicity)
-
-#     Maximum TTP = total post-warmup snapshots (treatment held the entire time).
-#     If breached on the very first post-warmup snapshot, TTP = 0.
-#     """
-#     if not traj.cell_counts:
-#         return 0
-
-#     w0 = cfg.get("_warmup_cells", 1000)
-#     upper = cfg["DANGER_CEIL"]   # e.g. 2.0 * W0
-#     lower = cfg["DANGER_FLOOR"]  # e.g. 0.25 * W0
-
-#     pw = traj._post_warmup_counts()
-#     if not pw:
-#         return 0
-
-#     for i, c in enumerate(pw):
-#         if c > upper or c < lower:
-#             return i
-
-#     return len(pw)
-
-
 def compute_fitness(traj, cfg):
     """
     Fitness = Time to Progression (TTP).
@@ -506,11 +444,6 @@ def compute_fitness(traj, cfg):
             return i
 
     return len(pw)
-
-
-# ─────────────────────────────────────────────────────────────────────────────
-# BASELINE + PREFLIGHT
-# ─────────────────────────────────────────────────────────────────────────────
 
 def _write_helper(path, body, cfg):
     os.makedirs(cfg["ROUTINES_DIR"], exist_ok=True)
@@ -567,7 +500,6 @@ def preflight(cfg):
           f"final={mx.final:,}  dose={mx.cumulative_dose:,.0f}")
     print(f"  Drugs {'WORK' if works else 'NO EFFECT'}")
 
-    # ── Calibrate containment band from baseline post-warmup dynamics ──
     # On large grids (50³), the tumor self-limits well below grid capacity.
     # We measure the post-warmup baseline trajectory to set a band that the untreated tumor will breach, creating pressure to treat.
     warmup_step = cfg["WARMUP_PERIOD"]
@@ -591,17 +523,6 @@ def preflight(cfg):
         pw_max = warmup_cells
         pw_min = warmup_cells
 
-    # old_danger = cfg["DANGER_CEIL"]
-    # upper_mult = 2.0
-    # lower_mult = 0.25
-    # cfg["DANGER_CEIL"]  = max(10, int(upper_mult * warmup_cells))
-    # cfg["DANGER_FLOOR"] = max(1, int(lower_mult * warmup_cells))
-    # cfg["MIN_THRESHOLD"] = max(10, int(warmup_cells // 5))
-    # cfg["_warmup_cells"] = warmup_cells
-    # cfg["_pw_mean"] = pw_mean
-    # cfg["_upper_mult"] = upper_mult
-    # cfg["_lower_mult"] = lower_mult
-    # cfg["_band_width"] = max(1, cfg["DANGER_CEIL"] - cfg["DANGER_FLOOR"])
     old_danger = cfg["DANGER_CEIL"]
     upper_mult = 1.50
     lower_mult = 0.50
@@ -622,10 +543,6 @@ def preflight(cfg):
     print(f"  Warmup cell count (t={warmup_step}): {warmup_cells:,}")
     print(f"  Post-warmup baseline: mean={pw_mean:.0f}  min={pw_min:,}  max={pw_max:,}")
 
-    # print(f"  Containment band: [{cfg['DANGER_FLOOR']:,}, {cfg['DANGER_CEIL']:,}]")
-    # print(f"    DANGER_FLOOR = {lower_mult} x W0: {cfg['DANGER_FLOOR']:,}")
-    # print(f"    DANGER_CEIL  = {upper_mult} x W0: {old_danger:,} -> {cfg['DANGER_CEIL']:,}")
-    # print(f"  Band width: {cfg['_band_width']:,}")
     print(f"  Containment band: [{cfg['DANGER_FLOOR']:,}, {cfg['DANGER_CEIL']:,}]")
     print(f"    DANGER_FLOOR = {lower_mult} x W0: {cfg['DANGER_FLOOR']:,}")
     print(f"    DANGER_CEIL  = {upper_mult} x W0: {old_danger:,} -> {cfg['DANGER_CEIL']:,}")
@@ -640,11 +557,6 @@ def preflight(cfg):
     print(f"  Baseline fitness (post-warmup stable): {bl_fit}", flush=True)
     cfg["_baseline_burden"] = bl.burden
     return bl, bl_fit, works
-
-
-# ─────────────────────────────────────────────────────────────────────────────
-# EVALUATION
-# ─────────────────────────────────────────────────────────────────────────────
 
 def _eval_one(args):
     i, genome_dict, cfg = args
@@ -690,14 +602,6 @@ def evaluate(population, cfg):
 
     return fitnesses, trajectories
 
-
-# ─────────────────────────────────────────────────────────────────────────────
-# GENETIC OPERATORS
-#
-# 1-point crossover on 2-gene genome
-# Modification-only mutation at 50% per gene
-# ─────────────────────────────────────────────────────────────────────────────
-
 def tournament_select(population, fitnesses, k):
     pairs = list(zip(population, fitnesses))
     return [copy.deepcopy(max(random.sample(pairs, min(k, len(pairs))),
@@ -741,10 +645,6 @@ def mutate(genome, cfg):
     # Gene 1: cell_threshold — multiplier on W₀, clamped to [1.0, 2.0]
     if random.random() < mr:
         genome.cell_threshold = round(max(1.0, min(2.0, genome.cell_threshold + random.gauss(0, 0.1))), 3)
-
-# ─────────────────────────────────────────────────────────────────────────────
-# MAIN GA
-# ─────────────────────────────────────────────────────────────────────────────
 
 def genetic_algorithm(cfg):
     random.seed(cfg["RANDOM_SEED"])
@@ -934,7 +834,7 @@ def genetic_algorithm(cfg):
         plt.savefig(plot_path, dpi=150)
         print(f"\nPlot: {plot_path}")
 
-    # ── Search space exploration plot ────────────────────────────────────
+    # Search space
     if explored:
         doses  = [e[0] for e in explored]
         threshs = [e[1] for e in explored]
